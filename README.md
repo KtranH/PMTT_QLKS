@@ -1,12 +1,11 @@
 ## Quản Lí Khách Sạn
 
 ## Các Thành Viên
-| Mã Sinh Viên | Họ Tên | Nhiệm vụ  |
+| Mã Sinh Viên | Họ Tên | Nhiệm vụ  | STT| 
 |:-------------|:------:|----------:|
 |  2001215884  |  Trần Hoàng Anh Khôi  |     |
 |  2001216198  |  Nguyễn Đoàn Anh Thư  |    |
 |  2001210742  |  Nguyễn Thành Trung  |     |
-| Footer | Footer | Footer |
 
 ## Mô Tả Ngắn
 
