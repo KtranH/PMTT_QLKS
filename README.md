@@ -9,7 +9,7 @@
 
 ## Mô Tả Ngắn
 
-Mục đích: giúp tối ưu hóa các chức năng chính như quản lý đặt phòng, tài chính, khách hàng, nhân sự, và dịch vụ, với các tính năng tự động hóa, phân tích báo cáo, và giao diện thân thiện với người dùng.  
+ 
 
 ## Tính Năng Chính
 - Tính năng 1:
