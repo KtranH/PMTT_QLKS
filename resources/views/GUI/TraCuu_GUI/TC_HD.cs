@@ -24,6 +24,15 @@ namespace QLKS
         {
             InitializeComponent();
         }
+        private void TC_HD_Load(object sender, EventArgs e)
+        {
+            PTP = db.GetPTPByID(Convert.ToInt32(MAHD));
+            LoadDV();
+            LoadData();
+            LoadKH();
+        }
+        //-----------------------------------------------------------------------------------------------------
+        //Lấy dữ liệu vào datagrid view
         public void LoadKH()
         {
             List<KHACHHANG> listKH = PTP.PHIEUNHANPHONG.KHACHHANGs.ToList();
@@ -43,17 +52,13 @@ namespace QLKS
            DT_DS_DV.Columns[3].HeaderText = "Đơn giá";
 
            foreach(CHITIETTRAPHONG item in CT_PTP)
-            {
-                tongTienDv += item.DICHVU.GIA.Value * item.SOLUONG.Value;
-            }    
+           {
+               tongTienDv += item.DICHVU.GIA.Value * item.SOLUONG.Value;
+           }    
         }
-        private void TC_HD_Load(object sender, EventArgs e)
-        {
-            PTP = db.GetPTPByID(Convert.ToInt32(MAHD));
-            LoadDV();
-            LoadData();
-            LoadKH();
-        }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Hiển thị dữ liệu
         public void LoadData()
         {
             culture.NumberFormat.NumberDecimalSeparator = ".";
@@ -67,6 +72,9 @@ namespace QLKS
             TEXT_TIENDV.Text = tongTienDv.ToString("c", culture);
             TEXT_THANHTIEN.Text = tongtien.ToString("c", culture);
         }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý nút xác nhận
         private void BTN_XACNHAN_Click(object sender, EventArgs e)
         {
             TT_HD HD = new TT_HD() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
@@ -74,5 +82,6 @@ namespace QLKS
             this.Controls.Add(HD);
             HD.Show();
         }
+        //-----------------------------------------------------------------------------------------------------
     }
 }

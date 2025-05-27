@@ -103,7 +103,7 @@ namespace QLKS
             this.SlideBar.Location = new System.Drawing.Point(0, 0);
             this.SlideBar.MaximumSize = new System.Drawing.Size(300, 1040);
             this.SlideBar.Name = "SlideBar";
-            this.SlideBar.Size = new System.Drawing.Size(300, 877);
+            this.SlideBar.Size = new System.Drawing.Size(300, 894);
             this.SlideBar.TabIndex = 0;
             // 
             // DANHMUC
@@ -633,7 +633,7 @@ namespace QLKS
             this.SlideMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.SlideMain.Location = new System.Drawing.Point(300, 0);
             this.SlideMain.Name = "SlideMain";
-            this.SlideMain.Size = new System.Drawing.Size(1613, 877);
+            this.SlideMain.Size = new System.Drawing.Size(1613, 894);
             this.SlideMain.TabIndex = 1;
             // 
             // guna2CustomGradientPanel1
@@ -804,7 +804,7 @@ namespace QLKS
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1456, 894);
+            this.ClientSize = new System.Drawing.Size(1456, 911);
             this.Controls.Add(this.SlideMain);
             this.Controls.Add(this.SlideBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using BLL;
 using DTO;
+using GUI.TaiNguyen_GUI;
 
 namespace QLKS
 {
@@ -19,16 +20,16 @@ namespace QLKS
         PHONG_BLL db = new PHONG_BLL();
         NHANVIEN_BLL dbNV = new NHANVIEN_BLL();
         LOAIPHONG_BLL loaiPhong = new LOAIPHONG_BLL();
-        NHANVIEN NHANVIEN = new NHANVIEN();
+        public NHANVIEN NHANVIEN { get; set; }
+        public XuLy_Phong XuLy_Phong = new XuLy_Phong();
         private bool isAddingNewItem = true;
-        public string UserCurrentPH { get; set; }
         public Phong()
         {
             InitializeComponent();
+            this.XuLy_Phong.NHANVIEN = this.NHANVIEN;
         }
         private void Phong_Load(object sender, EventArgs e)
         {
-            NHANVIEN = dbNV.GetNhanVienById(Convert.ToInt32(UserCurrentPH));
             loadPhong();
             loadCombox();
         }
@@ -38,6 +39,7 @@ namespace QLKS
         {
             List<PHONG> listPhong = new List<PHONG>();
             listPhong = db.GetAllPhong();
+            Data_Phong.DataSource = null;
             Data_Phong.DataSource = listPhong.Select(p => new { p.ID, p.TENPHONG, p.LOAIPHONG.TENLOAIPHONG, p.VITRI, p.TRANGTHAI }).ToList();
             Data_Phong.Columns[0].HeaderText = "Mã phòng";
             Data_Phong.Columns[1].HeaderText = "Tên phòng";
@@ -118,10 +120,7 @@ namespace QLKS
         }
         //-----------------------------------------------------------------------------------------------------
         private void FindRoom_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
+        {     }
         private void FindRoom_Click(object sender, EventArgs e)
         {
             Textbox_Find_Phong.Clear();
@@ -131,7 +130,7 @@ namespace QLKS
         //Xử lý nút thêm phòng
         private void BTN_THEMPHONG_Click(object sender, EventArgs e)
         {
-           if (NHANVIEN.CHUCVU == "Lễ tân")
+           if (!this.XuLy_Phong.CheckRole())
            {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
            }
@@ -197,15 +196,14 @@ namespace QLKS
         private void ResetTextBoxes()
         {
             Textbox_TenPhong.Clear();
-            Textbox_ViTri.Clear();
-          
+            Textbox_ViTri.Clear();    
         }
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //Xử lý nút lưu
         private void BTN_SAVEROOM_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_Phong.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -264,7 +262,7 @@ namespace QLKS
         //Xử lý nút cập nhật
         private void Button_CapNhat_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_Phong.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -279,7 +277,7 @@ namespace QLKS
         //Xử lý nút xóa
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_Phong.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

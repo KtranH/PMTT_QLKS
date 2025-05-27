@@ -20,6 +20,12 @@ namespace QLKS
         {
             InitializeComponent();
         }
+        private void TT_HD_Load(object sender, EventArgs e)
+        {
+            LoadHD();
+        }
+        //-----------------------------------------------------------------------------------------------------
+        //Lấy dữ liệu vào datagrid view
         public void LoadHD()
         {
             List<PHIEUTRAPHONG> listPTP = db.GetPTPPaied();
@@ -31,11 +37,9 @@ namespace QLKS
             DT_DS_HD.Columns[4].HeaderText = "Ngày trả phòng";
             DT_DS_HD.Columns[5].HeaderText = "Tiền phạt";
         }
-        private void TT_HD_Load(object sender, EventArgs e)
-        {
-            LoadHD();
-        }
-
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Hiển thị dữ liệu từ datagrid view vào text
         private void DT_DS_HD_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex >= 0)
@@ -44,10 +48,16 @@ namespace QLKS
                 TEXT_MAHOADON.Text = row.Cells[0].Value.ToString();
             }    
         }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý nút làm mới
         private void BTN_RESET_Click(object sender, EventArgs e)
         {
             LoadHD();
         }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý khi tìm kiếm
         private void BTN_TIMKIEM_Click(object sender, EventArgs e)
         {
            if(TEXT_FIND.Text.Trim() != "")
@@ -62,6 +72,9 @@ namespace QLKS
                 DT_DS_HD.Columns[5].HeaderText = "Tiền phạt";
             }    
         }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý nút xem chi tiết
         private void BTN_XEMCHITIET_Click(object sender, EventArgs e)
         {
             if(TEXT_MAHOADON.Text.Trim() != "")
@@ -77,5 +90,6 @@ namespace QLKS
                 MessageBox.Show("Vui lòng chọn một hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //-----------------------------------------------------------------------------------------------------
     }
 }

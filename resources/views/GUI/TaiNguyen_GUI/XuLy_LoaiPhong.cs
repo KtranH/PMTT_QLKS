@@ -15,6 +15,8 @@ namespace GUI.TaiNguyen_GUI
     {
         public LOAIPHONG_BLL db = new LOAIPHONG_BLL();
         public R2 R2 = new R2();
+        public NHANVIEN NHANVIEN = new NHANVIEN();
+        public XuLy_LoaiPhong xuLyLoaiPhong = new XuLy_LoaiPhong();
         //-----------------------------------------------------------------------------------------------------
         //Lấy ảnh từ R2
         public static async Task<Image> DownloadImageAsync(string url)
@@ -75,6 +77,32 @@ namespace GUI.TaiNguyen_GUI
             }
         }
         //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý tải ảnh và xóa ảnh từ R2 và database
+        public async Task removeImage(HINHLOAIPHONG x)
+        {
+            try
+            {
+                string prefix = "https://pub-c8adcbfebc8642f887468c77f77c44fe.r2.dev/";
+                string result = x.HINH.Substring(prefix.Length);
+                await R2.DeleteImageFromR2(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        //Kiểm tra quyền truy cập vào loại phòng
+        public bool CheckRole()
+        {
+            if(this.NHANVIEN.CHUCVU == "Lễ tân")
+            {
+                return false;
+            }
+            return true;
+        }
         //-----------------------------------------------------------------------------------------------------
     }
 }

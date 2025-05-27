@@ -483,11 +483,11 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(1455, 841);
+            this.Controls.Add(this.ShowImage);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.Button_ThemAnh);
             this.Controls.Add(this.combox_LoaiPhong);
             this.Controls.Add(this.guna2GroupBox2);
-            this.Controls.Add(this.ShowImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoaiPhong";

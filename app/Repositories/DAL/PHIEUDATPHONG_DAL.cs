@@ -1,6 +1,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,12 @@ namespace DAL
         }
         public int CountCateByIDInBooking(int ID)
         {
-            return db.PHIEUDATPHONGs.Where(p => p.LOAIPHONG.ID == ID && p.TINHTRANG == "Đã đặt phòng" && p.NGAYNHANPHONG >= DateTime.Now).Count();
+            var today = DateTime.Now.Date;
+            return db.PHIEUDATPHONGs
+                .Where(p => p.LOAIPHONG.ID == ID
+                            && p.TINHTRANG == "Đã đặt phòng"
+                            && DbFunctions.TruncateTime(p.NGAYNHANPHONG) >= today)
+                .Count();
         }
         public void UpdatePDP(PHIEUDATPHONG pDP)
         {

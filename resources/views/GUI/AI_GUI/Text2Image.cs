@@ -16,7 +16,6 @@ namespace GUI.AI_GUI
         {
             InitializeComponent();
         }
-
         private void Text2Image_Load(object sender, EventArgs e)
         {
             InitBrowser();

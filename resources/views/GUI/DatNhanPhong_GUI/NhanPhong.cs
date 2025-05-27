@@ -103,9 +103,8 @@ namespace QLKS
         {
             if(Combox_Find_Phong.SelectedIndex != 0)
             {
-                List<PHONG> findPhong = new List<PHONG>();
-                findPhong = db.GetFindPhongEmpty(Int32.Parse(Combox_Find_Phong.SelectedValue.ToString()), null);
-                DataPhong.DataSource = findPhong.Select(p => new { p.ID, p.TENPHONG, p.VITRI, p.LOAIPHONG.GIATHUE, p.TRANGTHAI, p.LOAIPHONG.TENLOAIPHONG }).ToList();
+                listPhongEmpty = db.GetFindPhongEmpty(Int32.Parse(Combox_Find_Phong.SelectedValue.ToString()), null);
+                DataPhong.DataSource = listPhongEmpty.Select(p => new { p.ID, p.TENPHONG, p.VITRI, p.LOAIPHONG.GIATHUE, p.TRANGTHAI, p.LOAIPHONG.TENLOAIPHONG }).ToList();
             }
             else
             {

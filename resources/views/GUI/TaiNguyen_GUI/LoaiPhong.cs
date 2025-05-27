@@ -19,12 +19,13 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
     {
         public LOAIPHONG_BLL db = new LOAIPHONG_BLL();
         public R2 R2 = new R2();
-        public XuLy_LoaiPhong xuLyLoaiPhong = new XuLy_LoaiPhong();
-        public NHANVIEN NHANVIEN = new NHANVIEN();
+        public XuLy_LoaiPhong XuLy_LoaiPhong = new XuLy_LoaiPhong();
+        public NHANVIEN NHANVIEN { get; set; }
 
         public LoaiPhong()
         {
             InitializeComponent();
+            this.XuLy_LoaiPhong.NHANVIEN = this.NHANVIEN;
         }
         private void LoaiPhong_Load(object sender, EventArgs e)
         {
@@ -126,7 +127,7 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
                         try
                         {
                             HINHLOAIPHONG remove = pictureBox.Tag as HINHLOAIPHONG;
-                            await removeImage(remove);
+                            await this.XuLy_LoaiPhong.removeImage(remove);
                             db.RemoveHinhLoaiPhong(remove);
                             MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -138,22 +139,6 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
                     pictureBox.Controls.Add(btnClose);
                     ShowImage.Controls.Add(pictureBox);
                 }
-            }
-        }
-        //-----------------------------------------------------------------------------------------------------
-        //-----------------------------------------------------------------------------------------------------
-        //Xử lý tải ảnh và xóa ảnh từ R2 và database
-        public async Task removeImage(HINHLOAIPHONG x)
-        {
-            try
-            {
-                string prefix = "https://pub-c8adcbfebc8642f887468c77f77c44fe.r2.dev/";
-                string result = x.HINH.Substring(prefix.Length);
-                await R2.DeleteImageFromR2(result);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
         //-----------------------------------------------------------------------------------------------------
@@ -202,7 +187,7 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
             {
                 int ID = Int32.Parse(combox_LoaiPhong.SelectedValue.ToString());
                 String nameCate = combox_LoaiPhong.Text;
-                xuLyLoaiPhong.uploadImage(ID, nameCate);
+                this.XuLy_LoaiPhong.uploadImage(ID, nameCate);
                 ShowImage.Controls.Clear();
                 LoadImage(ID);
             }
@@ -239,7 +224,6 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
             Textbox_NoiThat.ReadOnly = false;
             Textbox_TienIch.ReadOnly = false;
             Textbox_MoTa.ReadOnly = false;
-
         }
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
@@ -253,7 +237,6 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
             Textbox_NoiThat.Clear();
             Textbox_TienIch.Clear();
             Textbox_MoTa.Clear();
-
         }
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
@@ -263,7 +246,6 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
             try
             {
                 int sucChua;
-
                 bool isSucChuaValid = int.TryParse(Textbox_SucChua.Text, out sucChua);
                 if (db.KTTrung(Textbox_TenLoaiPhong.Text))
                 {
@@ -311,7 +293,7 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
         //Xử lý nút lưu
         private void Button_Luu_Click(object sender, EventArgs e)
         {
-           if (NHANVIEN.CHUCVU == "Lễ tân")
+           if (!this.XuLy_LoaiPhong.CheckRole())
            {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
            }
@@ -326,7 +308,7 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
         //Xử lý nút cập nhật
         private void Button_CapNhat_Click(object sender, EventArgs e)
         {
-           if (NHANVIEN.CHUCVU == "Lễ tân")
+           if (!this.XuLy_LoaiPhong.CheckRole())
            {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
            }
@@ -361,7 +343,6 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
                             TIENICH = tienIch,
                             ISDELETED = false
                         };
-
                         bool updateResult = db.UpdateLoaiPhong(loaiPhongToUpdate);
 
                         if (updateResult)
@@ -386,7 +367,7 @@ namespace GUI.TaiNguyen_GUI.Phong_GUI
         //Xử lý nút xóa
         private void Button_Xoa_Click(object sender, EventArgs e)
         {
-            if(NHANVIEN.CHUCVU == "Lễ tân")
+            if(!this.XuLy_LoaiPhong.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

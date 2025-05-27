@@ -110,6 +110,7 @@ namespace QLKS
            if(ConfirmToMove())
             {
                 LoaiPhong OpenLoaiPhong = new LoaiPhong() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                OpenLoaiPhong.NHANVIEN = this.userCurrent;
                 this.ConvertForm.Controls.Clear();
                 this.ConvertForm.Controls.Add(OpenLoaiPhong);
                 OpenLoaiPhong.Show();
@@ -123,6 +124,7 @@ namespace QLKS
             if(ConfirmToMove())
             {
                 Phong OpenPhong = new Phong() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                OpenPhong.NHANVIEN = this.userCurrent;
                 this.ConvertForm.Controls.Clear();
                 this.ConvertForm.Controls.Add(OpenPhong);
                 OpenPhong.Show();
@@ -136,6 +138,7 @@ namespace QLKS
            if(ConfirmToMove())
            {
                 Dichvu openDichVu = new Dichvu() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                openDichVu.NHANVIEN = this.userCurrent;
                 this.ConvertForm.Controls.Clear();
                 this.ConvertForm.Controls.Add(openDichVu);
                 openDichVu.Show();
@@ -349,7 +352,7 @@ namespace QLKS
            }
            if (ConfirmToMove())
            {
-                TT_PDP PDP = new TT_PDP() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                TT_DG PDP = new TT_DG() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 PDP.currentUser = this.userCurrent.ID.ToString();
                 this.ConvertForm.Controls.Clear();
                 this.ConvertForm.Controls.Add(PDP);

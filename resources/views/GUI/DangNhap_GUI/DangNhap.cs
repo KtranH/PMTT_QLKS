@@ -19,6 +19,8 @@ namespace QLKS
         {
             InitializeComponent();
         }
+        //-----------------------------------------------------------------------------------------------------
+        //Hiển thị lỗi khi có vấn đề đăng nhập
         private void BTNTENTK_Click(object sender, EventArgs e)
         {
             BTNTENTK.Clear();
@@ -43,6 +45,7 @@ namespace QLKS
                 BTNMK.Text = "Nhập tên tài khoản của bạn";
             }
         }
+        //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //Xử lý khi ấn nút đăng nhập
         private void BTNLOGIN_Click(object sender, EventArgs e)

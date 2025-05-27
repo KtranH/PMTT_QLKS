@@ -16,6 +16,8 @@ namespace QLKS
 {
     public partial class CT_PhieuNhanPhong : Form
     {
+        List<KHACHHANG> listKhIn = new List<KHACHHANG>();
+        PHONG phong = new PHONG();
         public PHONG_BLL dbPhong = new PHONG_BLL();
         public KHACHHANG_BLL dbKH = new KHACHHANG_BLL();
         public PHIEUNHANPHONG_BLL dbPNP = new PHIEUNHANPHONG_BLL();
@@ -28,10 +30,6 @@ namespace QLKS
         public int idPNP { get; set; } = 0;
         public decimal moreMoney { get; set; } = 0;
         public PHIEUDATPHONG pdp { get; set; } = null;
-
-        List<KHACHHANG> listKhIn = new List<KHACHHANG>();
-        PHONG phong = new PHONG();
-
         public CT_PhieuNhanPhong()
         {
             InitializeComponent();

@@ -19,6 +19,8 @@ namespace GUI.DatNhanPhong_GUI
         public String Date_Checkin { get; set; }
         public String Date_Checkout { get; set; }
         public decimal Gia { get; set; } = 0;
+        //-----------------------------------------------------------------------------------------------------
+        //Xử lý tiến trình đặt phòng
 
         public void ProcessingCheckin(List<KHACHHANG> listKH, PHONG phong)
         {
@@ -35,5 +37,6 @@ namespace GUI.DatNhanPhong_GUI
             dbPNP.GetInsertDetailPNP(newPDP, listKH);
             dbPTP.GetInsertNewPTP(newPDP.ID, newPDP.NGAYTRAPHONG.Value, this.Gia);
         }
+        //-----------------------------------------------------------------------------------------------------
     }
 }

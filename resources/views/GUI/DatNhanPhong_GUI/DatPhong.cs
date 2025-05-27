@@ -19,10 +19,10 @@ namespace GUI.DatNhanPhong_GUI
         LOAIPHONG_BLL dbLoaiPhong = new LOAIPHONG_BLL();
         PHONG_BLL dbPhong = new PHONG_BLL();
         List<PHIEUDATPHONG> listPDP = new List<PHIEUDATPHONG>();
-        string loaiphong;
-        public string userCurrent { get; set; }
         PHONG currentPhong = null;
         PHIEUDATPHONG currentPDP = new PHIEUDATPHONG();
+        string loaiphong;
+        public string userCurrent { get; set; }
         public DatPhong()
         {
             InitializeComponent();
@@ -67,7 +67,7 @@ namespace GUI.DatNhanPhong_GUI
             string find = Textbox_Find_DatPhong.Text;
             List<PHIEUDATPHONG> listFind = new List<PHIEUDATPHONG>();
             listFind = db.GetFindPDP(find);
-            Data_DatPhong.DataSource = listFind.Select(p => new { p.ID, p.NGAYNHANPHONG, p.NGAYTRAPHONGDUKIEN, p.LOAIPHONG.TENLOAIPHONG, p.KHACHHANG.HOTEN, p.KHACHHANG.EMAIL, p.TINHTRANG }).ToList();
+            Data_DatPhong.DataSource = listFind.Select(p => new { p.ID, p.NGAYNHANPHONG, p.NGAYTRAPHONGDUKIEN, p.LOAIPHONG.TENLOAIPHONG, p.KHACHHANG.HOTEN, p.KHACHHANG.EMAIL, p.TINHTRANG, p.LUUTRU }).ToList();
         }
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------

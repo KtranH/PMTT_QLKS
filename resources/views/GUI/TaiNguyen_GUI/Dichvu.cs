@@ -1,5 +1,6 @@
 using BLL;
 using DTO;
+using GUI.TaiNguyen_GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,19 +20,21 @@ namespace QLKS
     {
         public DICHVU_BLL db = new DICHVU_BLL();
         public NHANVIEN_BLL dbNV = new NHANVIEN_BLL();
+        public XuLy_DichVu XuLy_DichVu { get; set; }
         private bool isAddingNewItem = true;
-        public string UserCurrentDV { get; set; }
-        NHANVIEN NHANVIEN = new NHANVIEN();
+        public NHANVIEN NHANVIEN { get; set; }
         public Dichvu()
         {
             InitializeComponent();
+            this.XuLy_DichVu.NHANVIEN = this.NHANVIEN;
         }
         private void Dichvu_Load(object sender, EventArgs e)
         {
-            NHANVIEN = dbNV.GetNhanVienById(Convert.ToInt32(UserCurrentDV));
             loadDV();
             loadCombox();
         }
+        //-----------------------------------------------------------------------------------------------------
+        //Khóa input
         public void LockControl()
         {
             Textbox_GiaDichVu.Enabled = false;
@@ -53,6 +56,7 @@ namespace QLKS
             Textbox_TenDichVu.ReadOnly = false;
             Textbox_MoTa.ReadOnly = false;
         }
+        //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //Lấy dữ liệu dịch vụ vào datagrid view
         public void loadDV()
@@ -167,7 +171,6 @@ namespace QLKS
             LoadEnable();
             resetBox();
         }
-
         void LoadEnable()
         {
             Textbox_TenDichVu.Enabled = true;
@@ -222,17 +225,17 @@ namespace QLKS
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                 }
             }
-            catch (Exception ex)
-            {
+           catch (Exception ex)
+           {
                 MessageBox.Show("Cập nhật dịch vụ thất bại");
-            }
+           }
         }
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //Xử lí nút cập nhật
         private void BTN_UPDATEDV_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_DichVu.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -246,7 +249,7 @@ namespace QLKS
         //Xử lí nút lưu
         private void BTN_SAVEDV_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_DichVu.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -254,9 +257,7 @@ namespace QLKS
            {
                 if (isAddingNewItem)
                 {
-
                     Them();
-
                 }
                 else
                 {
@@ -280,7 +281,7 @@ namespace QLKS
         //Xử lí nút xóa
         private void Button_XoaDichVu_Click(object sender, EventArgs e)
         {
-            if (NHANVIEN.CHUCVU == "Lễ tân")
+            if (!this.XuLy_DichVu.CheckRole())
             {
                 MessageBox.Show("Bạn không có quyền truy cập vào đây", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

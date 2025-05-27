@@ -136,6 +136,7 @@
     <Compile Include="TaiNguyen_GUI\LoaiPhong.Designer.cs">
       <DependentUpon>LoaiPhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaiNguyen_GUI\XuLy_DichVu.cs" />
     <Compile Include="TaiNguyen_GUI\XuLy_LoaiPhong.cs" />
     <Compile Include="TaiNguyen_GUI\XuLy_Phong.cs" />
     <Compile Include="TrangChu_GUI\GunaChartDataPoint.cs" />
@@ -201,12 +202,6 @@
     <Compile Include="TraCuu_GUI\TC_HD.Designer.cs">
       <DependentUpon>TC_HD.cs</DependentUpon>
     </Compile>
-    <Compile Include="TraCuu_GUI\TC_PDP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TraCuu_GUI\TC_PDP.Designer.cs">
-      <DependentUpon>TC_PDP.cs</DependentUpon>
-    </Compile>
     <Compile Include="TrangChu_GUI\TrangChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,11 +220,11 @@
     <Compile Include="TraCuu_GUI\TT_HD.Designer.cs">
       <DependentUpon>TT_HD.cs</DependentUpon>
     </Compile>
-    <Compile Include="TraCuu_GUI\TT_PDP.cs">
+    <Compile Include="TraCuu_GUI\TT_DG.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TraCuu_GUI\TT_PDP.Designer.cs">
-      <DependentUpon>TT_PDP.cs</DependentUpon>
+    <Compile Include="TraCuu_GUI\TT_DG.Designer.cs">
+      <DependentUpon>TT_DG.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AI_GUI\Agent.resx">
       <DependentUpon>Agent.cs</DependentUpon>
@@ -285,9 +280,6 @@
     <EmbeddedResource Include="TraCuu_GUI\TC_HD.resx">
       <DependentUpon>TC_HD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TraCuu_GUI\TC_PDP.resx">
-      <DependentUpon>TC_PDP.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TrangChu_GUI\TrangChinh.resx">
       <DependentUpon>TrangChinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,8 +289,8 @@
     <EmbeddedResource Include="TraCuu_GUI\TT_HD.resx">
       <DependentUpon>TT_HD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TraCuu_GUI\TT_PDP.resx">
-      <DependentUpon>TT_PDP.cs</DependentUpon>
+    <EmbeddedResource Include="TraCuu_GUI\TT_DG.resx">
+      <DependentUpon>TT_DG.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

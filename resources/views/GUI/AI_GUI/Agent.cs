@@ -25,7 +25,6 @@ namespace GUI.AI_GUI
             await innitizated();
             webView21.CoreWebView2.Navigate("http://127.0.0.1:7862");
         }
-
         private void Agent_Load(object sender, EventArgs e)
         {
             InitBrowser();

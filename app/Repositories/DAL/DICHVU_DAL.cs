@@ -23,6 +23,7 @@ namespace DAL
         {
             try
             {
+                P.ISDELETED = false;
                 db.DICHVUs.Add(P);
                 db.SaveChanges();
                 return true;
